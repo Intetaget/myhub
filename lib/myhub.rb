@@ -1,6 +1,6 @@
 require "sinatra/base"
 require "httparty"
-require "pry"
+require 'pry'
 
 require "myhub/version"
 require "myhub/github"

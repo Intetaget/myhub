@@ -1,0 +1,28 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Mans's Github Changer</title>
+    <link rel="stylesheet" href="main.css">
+  </head>
+  <body>REPOSITORY
+      <h1></h1>
+
+      <p>You're probably here to open and close issues right?</p>
+      <ul class="Github">
+              <% issues.each do |issue| %>
+              <li><a href="<%= issue["url"] %>">"<%= issue["title"] %>"</a>
+                  <p>Issue status: <%= issue["state"] %>-</p>
+                  <% if issue["state"] == "closed" %>
+                    <form action="/issue/reopen/<%= issue["number"] %>" method="post">
+                      <input type="submit" value="Reopen Issue">
+                  <% elsif issue["state"] == "open" %>
+                    <form action="/issue/close/<%= issue["number"] %>" method="post">
+                      <input type="submit" value="Close Issue">
+                      <% end %>
+                  </form>
+              </li>
+          <% end %>
+      </ul>
+  </body>
+</html>
